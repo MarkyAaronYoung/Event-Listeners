@@ -1,59 +1,75 @@
 const pies = [
   {
-   type: 'Apple',
-   size: 'Family',
-   crust: 'Lattuce',
-   price: 30,
-   imageUrl: 'https://www.google.com/imgres?imgurl=https%3A%2F%2Fimagesvc.meredithcorp.io%2Fv3%2Fmm%2Fimage%3Furl%3Dhttps%253A%252F%252Fimg1.southernliving.timeinc.net%252Fsites%252Fdefault%252Ffiles%252Fstyles%252Fmedium_2x%252Fpublic%252Fimage%252F2019%252F08%252Fmain%252F2589601_mailb_mailbox_apple_pie_003.jpg%253Fitok%253DXkbaosJ5&imgrefurl=https%3A%2F%2Fwww.southernliving.com%2Frecipes%2Fold-fashioned-apple-pie&tbnid=kDeeJH7y_quPSM&vet=12ahUKEwilo5my34npAhVaUs0KHbgdAf4QMygBegUIARDaAg..i&docid=mFy0Iv6LjRhe7M&w=1200&h=668&q=apple%20pie&ved=2ahUKEwilo5my34npAhVaUs0KHbgdAf4QMygBegUIARDaAg',
-   owner: 'luke',
-   aLaMode: true 
+    type: 'Apple',
+    size: 'Family',
+    crust: 'Lattuce',
+    price: 30,
+    imageUrl: 'https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimg1.southernliving.timeinc.net%2Fsites%2Fdefault%2Ffiles%2Fstyles%2Fmedium_2x%2Fpublic%2Fimage%2F2019%2F08%2Fmain%2F2589601_mailb_mailbox_apple_pie_003.jpg%3Fitok%3DXkbaosJ5',
+    owner: 'luke',
+    aLaMode: true
   },
   {
     type: 'Pecan',
     size: 'Personal',
     crust: 'Basic Flaky',
     price: 3,
-    imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQcAwtkpIvKdnXqtdmqibXRZnwLdyPPhw2otstmrLQHnIUi24DHDcjjl80E5g&usqp=CAc',
+    imageUrl: 'https://i2.wp.com/www.livewellbakeoften.com/wp-content/uploads/2016/11/Mini-Pecan-Pies-3.jpg?resize=1360%2C2040&ssl=1',
     owner: 'michael',
-    aLaMode: false 
-   },
-   {
+    aLaMode: false
+  },
+  {
     type: 'Blueberry',
     size: 'Regular',
     crust: 'Crumb',
     price: 400,
-    imageUrl: 'https://dinnerthendessert.com/wp-content/uploads/2019/01/Blueberry-Pie-2.jpg',
-    owner: 'michael',
+    imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTK8Vps5vD5FKfXH1Cvkln0n1p-M5kzkgsy95z-W1JgFrFE0ukk&usqp=CAU',
+    owner: 'matt',
     aLaMode: true
-   },
-   {
-    type: 'pizza pie',
+  },
+  {
+    type: 'Meat Pie',
+    size: 'Real Big',
+    crust: 'Meat Crust',
+    price: 1,
+    imageUrl: 'https://culinaryginger.com/wp-content/uploads/Minced-Beef-and-Onion-Pies-10-480x480.jpg',
+    owner: 'luke',
+    aLaMode: true
+  },
+  {
+    type: 'Pizza Pie',
     size: 'XL',
     crust: 'regular',
     price: 6,
-    imageUrl: 'https://image.shutterstock.com/image-photo/pizza-260nw-314804678.jpg',
+    imageUrl: 'https://themercenaryresearcher.files.wordpress.com/2012/07/ginormous-pizza.jpg',
     owner: 'michael',
     aLaMode: true
-   },
-   {
+  },
+  {
     type: 'Rhubarb',
     size: 'Pie Sized',
-    crust: 'normal',
-    price: 2147596,
-    imageUrl: 'https://image.shutterstock.com/image-photo/pizza-260nw-314804678.jpg',
+    crust: 'Normal',
+    price: 2147483647,
+    imageUrl: 'https://assets.kraftfoods.com/recipe_images/opendeploy/54036_640x428.jpg',
     owner: 'matt',
     aLaMode: true
-   },
-   {
+  },
+  {
     type: 'Spanakopita',
     size: 'Pan',
     crust: 'Filo',
     price: 8,
-    imageUrl: 'https://image.shutterstock.com/image-photo/pizza-260nw-314804678.jpg',
-    owner: 'nobody',
+    imageUrl: 'https://www.veggiesdontbite.com/wp-content/uploads/2018/12/healthy-vegan-spanakopita-117-500x500.jpg',
+    owner: 'everybody',
     aLaMode: false
-   }  
+  }
 ];
+
+// 1. make 4 buttons, one for each instructor and one for "allpies " (Javascript is used to add something dynamic to the website - where we don't know what the value is. But hardcode things in HMTL that do not change, like making four buttons)
+// 2. when you click on a button, do the filter thing
+//  a. console.log out a button click
+//  b. filter collection?
+// 3. Reprint the dom with the filtered pies?
+
 
 const printToDom = (selector, textToPrint) => {
   const selectedDiv = document.querySelector(selector);
@@ -61,22 +77,56 @@ const printToDom = (selector, textToPrint) => {
 }
 
 const buildPies = (pieCollection) => {
-   let domString = '';
+  let domString = '';
 
   for (let i = 0; i < pieCollection.length; i++) {
     domString += `
-       <div class="pie">
+      <div class="pie">
         <h2>${pieCollection[i].type}</h2>
         <img src="${pieCollection[i].imageUrl}" alt="image of ${pieCollection[i].type} pie">
-        <p>This ${pieCollection[i].type} pie is a ${pieCollection[i].size} pie, it's owned by ${pieCollection[i].owner} and has a ${pieCollection[i].crust}</p>
-        </div>`;
+        <p>This ${pieCollection[i].type} pie is a ${pieCollection[i].size} pie, it's owned by ${pieCollection[i].owner}, and has a ${pieCollection[i].crust} crust.</p>
+        <h4>Price: ${pieCollection[i].price}</h4>
+      </div>
+    `;
   }
-  
-  printToDom('#pieContainer, domString);
+
+  printToDom('#pieContainer', domString);
 }
 
+const filterPiesEvent = (event) => {
+  const buttonId = event.target.id;
+  // console.log('click worked');
+  // console.log(event.target);
+  //get all pies
+  // only show luke pies
+  const tempPieCollection = [];
+
+  if (buttonId === 'all') {
+    buildPies(pies);
+    return;
+  }
+
+  for (let i = 0; i < pies.length; i++) {
+    if (pies[i].owner === buttonId) {
+      tempPieCollection.push(pies[i]);
+    }
+  }
+
+  buildPies(tempPieCollection);
+}
+
+
+const clickEvents = () => {
+ document.querySelector('#luke').addEventListener('click', filterPiesEvent);
+ document.querySelector('#michael').addEventListener('click', filterPiesEvent);
+ document.querySelector('#matt').addEventListener('click', filterPiesEvent);
+ document.querySelector('#all').addEventListener('click', filterPiesEvent);
+}
+
+
 const init = () => {
-  console.log('make sure it works')
+  buildPies(pies);
+  clickEvents();
 }
 
 init();
